@@ -1,5 +1,5 @@
 import numpy as np
-
+from queue import PriorityQueue
 
 #problem state
 class Ship():
@@ -10,6 +10,20 @@ class Problem:
     def __init__(self, problem_state):
         self.seen_set = set()
         self.init = ...
+        self.solution = [] #list of string instructinos
+        self.queue = PriorityQueue()
+
+    #functions inspired by my previous work in cs170 with A* Search
+    def add_action(self,action):
+        self.solution.append(action)
+        return
+    
+    def push(self,node):
+        self.queue.put((node.cost,node))
+        return
+
+    def pop(self):
+        return self.queue.get()
         
     def is_goal(left,right):
         # expand on this...
@@ -28,11 +42,22 @@ class Node():
         return self.cost < node.cost
 
     def expand(self,seen_set):
-        
+        return ... # todo
 
-    #cost function (manhattan distance)
+    # cost function (manhattan distance)
     def find_cost(pos1,pos2):
-        return (abs(pos1[0]-pos2[0])+abs(pos1[1]-pos2[1])) #x and y
+        return (abs(pos1[0]-pos2[0])+abs(pos1[1]-pos2[1])) # x and y
+    
+# pass ship state and container starting position to retrieve where to move it
+def find_nearest_space(ship_state, start_pos):
+    # a qualifying space must minimize distance moved to the other side
+    # and not be floating
+
+    # algorithm:
+    # get ship width
+    # is start_pos on left or right? (x coord is < or >= to width/2 + 1)
+    # 
+    return ...
 
 #start state
 
