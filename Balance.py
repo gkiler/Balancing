@@ -41,8 +41,47 @@ class Node():
     def __lt__(self,node):
         return self.cost < node.cost
 
+    def find_weights(self):
+        # get width
+        ship_width = ...
+        l_start = 0
+        r_start = ship_width / 2 + 1
+        left_weight = 0
+        right_weight = 0
+        # for container in left half of ship:
+            # left_weight += weight
+        # for container in right half of ship:
+            # right_weight += weight 
+        if left_weight > right_weight:
+            is_left = True
+        else:
+            is_left = False
+        return left_weight, right_weight, is_left
+
     def expand(self,seen_set):
-        return ... # todo
+        # expand the set by finding all of the spaces surface
+        # containers can be moved to
+        width = ...
+        _,_,is_left = self.find_weights()
+        # use same function as used in is_goal()
+        # which side is the heavier half?
+        if is_left:
+            l_start = 0
+            r_start = width / 2 + 1
+        else:
+            l_start = width / 2 + 1
+            r_start = width
+        # for l_start -> r_start:
+            # for top to bottom:
+                # if self.state[x,y] not empty:
+                    # to_test_set.append(state[x,y])
+        # nearest_space = find_nearest_space(self.state, edge of half position) 
+        # for container in expand_set:
+            # new_state = copy.copy(self.state)
+            # new_state.swap(nearest_space, container.position)
+            # if new_state.tobytes() not in seen_set:
+                # expand_set.append((new_state,container.position,nearest_space)) # to store to/from pos
+        # return expand_set        
 
     # cost function (manhattan distance)
     def find_cost(pos1,pos2):
@@ -63,12 +102,6 @@ def find_nearest_space(ship_state, start_pos):
             # if yes, return that position
     # figure out what to do if this all messes up and there's no free space
     return ...
-
-#start state
-
-#goal state
-
-#heuristic 
 
 
 
