@@ -56,7 +56,12 @@ def find_nearest_space(ship_state, start_pos):
     # algorithm:
     # get ship width
     # is start_pos on left or right? (x coord is < or >= to width/2 + 1)
-    # 
+        # iterate over the ship spaces from 
+        # bottom up left to right 
+        # or right to left respectively
+        # is this space empty? its not floating implicitly so we dont need to check
+            # if yes, return that position
+    # figure out what to do if this all messes up and there's no free space
     return ...
 
 #start state
